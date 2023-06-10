@@ -27,30 +27,25 @@ AppState.prototype.saveToLocalStorage = function () {
 AppState.prototype.loadItems = function () {
 
   let previousProductArray = localStorage.getItem('ProductData');
-  console.log(this.previousProductArray)
   let reconstructedProduct;
   // TODO: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
   if(previousProductArray){
     previousProductArray = JSON.parse(previousProductArray);
     for(let i=0; i < previousProductArray.length; i++){
       if(previousProductArray[i].name === 'sweep'){
-        console.log(previousProductArray)
-      reconstructedProduct = new Product(previousProductArray[i].name, 'png');
-      reconstructedProduct.source = previousProductArray[i].source;
-      reconstructedProduct.timesClicked = previousProductArray[i].timesClicked;
-      reconstructedProduct.timesShown = previousProductArray[i].timesShown;
-
-      this.allProducts.push(reconstructedProduct);
-    } else{
-      reconstructedProduct = new Product(previousProductArray[i].name);
-      reconstructedProduct.source = previousProductArray[i].source;
-      reconstructedProduct.timesClicked = previousProductArray[i].timesClicked;
-      reconstructedProduct.timesShown = previousProductArray[i].timesShown;
-
-      this.allProducts.push(reconstructedProduct);
+        reconstructedProduct = new Product(previousProductArray[i].name, 'png');
+        reconstructedProduct.source = previousProductArray[i].source;
+        reconstructedProduct.timesClicked = previousProductArray[i].timesClicked;
+        reconstructedProduct.timesShown = previousProductArray[i].timesShown;
+        this.allProducts.push(reconstructedProduct);
+      } else{
+        reconstructedProduct = new Product(previousProductArray[i].name);
+        reconstructedProduct.source = previousProductArray[i].source;
+        reconstructedProduct.timesClicked = previousProductArray[i].timesClicked;
+        reconstructedProduct.timesShown = previousProductArray[i].timesShown;
+        this.allProducts.push(reconstructedProduct);
+      }
     }
-  }
-  console.log(reconstructedProduct);
   }
   else{
     this.instantiateProducts();
