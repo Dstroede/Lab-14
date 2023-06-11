@@ -21,6 +21,8 @@ header{
 header h1{
     width: 75%;
     font-size: 3em;
+    color: white;
+    
 }
 header li{
     border: 2px solid black;
